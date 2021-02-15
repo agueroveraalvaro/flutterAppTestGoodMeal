@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
       builder: (_) => Scaffold(
         body: SafeArea(
           child: buildHomeView(_),
-        )
+        ),
       ),
     );
   }
