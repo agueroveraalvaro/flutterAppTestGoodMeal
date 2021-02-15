@@ -57,26 +57,26 @@ class WeatherDay {
         json['dt'],//dt
         json['sunrise'],//sunrise
         json['sunset'],//sunset
-        json['temp']['day'],//tempDay
-        json['temp']['min'],//tempMin
-        json['temp']['max'],//tempMax
-        json['temp']['night'],//tempNight
-        json['temp']['eve'],//tempEve
-        json['temp']['morn'],//tempMorn
-        json['feels_like']['day'],//feelsLikeDay
-        json['feels_like']['night'],//feelsLikeNight
-        json['feels_like']['eve'],//feelsLikeEve
-        json['feels_like']['morn'],//feelsLikeMorn
+        double.tryParse(json['temp']['day'].toString()),//tempDay
+        double.tryParse(json['temp']['min'].toString()),//tempMin
+        double.tryParse(json['temp']['max'].toString()),//tempMax
+        double.tryParse(json['temp']['night'].toString()),//tempNight
+        double.tryParse(json['temp']['eve'].toString()),//tempEve
+        double.tryParse(json['temp']['morn'].toString()),//tempMorn
+        double.tryParse(json['feels_like']['day'].toString()),//feelsLikeDay
+        double.tryParse(json['feels_like']['night'].toString()),//feelsLikeNight
+        double.tryParse(json['feels_like']['eve'].toString()),//feelsLikeEve
+        double.tryParse(json['feels_like']['morn'].toString()),//feelsLikeMorn
         json['pressure'],//pressure
         json['humidity'],//humidity
         json['weather'][0]['id'],//weatherId
         json['weather'][0]['main'],//weatherMain
         json['weather'][0]['description'],//weatherDescription
         json['weather'][0]['icon'],//weatherIcon
-        json['speed'],//speed
+        double.tryParse(json['speed'].toString()),//speed
         json['deg'],//deg
         json['clouds'],//clouds
-        json['pop']//pop
+        double.tryParse(json['pop'].toString())//pop
     );
   }
 }
