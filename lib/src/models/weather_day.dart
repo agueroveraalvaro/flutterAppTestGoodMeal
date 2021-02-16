@@ -24,6 +24,7 @@ class WeatherDay {
   int deg;
   int clouds;
   double pop;
+  String dayName;
 
   WeatherDay(
       this.dt,

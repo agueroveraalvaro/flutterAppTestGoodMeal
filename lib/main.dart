@@ -12,8 +12,8 @@ void main() async {
         debugShowCheckedModeBanner: false,
         home: _defaultHome,
         theme: ThemeData(
-          primaryColor: Colors.lightBlue,
-          accentColor: Colors.blueAccent,
+          primaryColor: Colors.grey,
+          accentColor: Colors.blueGrey,
         ),
         routes: <String, WidgetBuilder>{
           '/home': (BuildContext context) => HomePage(),

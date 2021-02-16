@@ -4,18 +4,20 @@ import 'package:flutter_app_test_good_meal_app/src/apis/open_weather_api.dart';
 import 'package:flutter_app_test_good_meal_app/src/models/weather_day.dart';
 import 'package:flutter_app_test_good_meal_app/src/util/constants.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HomeController extends GetxController
 {
   TextEditingController searchTextFieldController = TextEditingController();
-  List<WeatherDay> weatherDays = new List();
-  String currentCityName = '';
+  List<WeatherDay> weatherDays;
+  String currentCityName = 'Santiago';
 
   @override
   void onInit() {
     super.onInit();
 
-    _fetchForecast('Santiago'); //By default Santiago
+    searchTextFieldController.text = currentCityName;
+    _fetchForecast(currentCityName); //By default Santiago
   }
 
   searchForecast() {
@@ -41,9 +43,16 @@ class HomeController extends GetxController
       List<dynamic> list = response.data["list"] as List;
       weatherDays = list.map((result) => WeatherDay.fromJson(result)).toList();
 
-      updateCurrentCityName();
+      final date = DateTime.now();
+      var days = 0;
+
+      weatherDays.forEach((weatherDay) {
+        weatherDay.dayName = DateFormat('EEEE').format(date.add(Duration(days: days)));
+        days++;
+      });
+
       //GetX Update views
-      update(['weatherInformation']);
+      updateHomeViewInformation();
     } else
       Get.dialog(
           AlertDialog(
@@ -53,11 +62,9 @@ class HomeController extends GetxController
       );
   }
 
-  updateCurrentCityName() {
-    print('updateCurrentCityName');
+  updateHomeViewInformation() {
     currentCityName = searchTextFieldController.text;
-    print('currentCityName: ' + currentCityName);
-    update(['currentCityName']);
+    update(['forecastHomeView']);
   }
 
   @override
